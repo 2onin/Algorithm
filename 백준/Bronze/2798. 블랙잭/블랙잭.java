@@ -13,35 +13,28 @@ public class Main {
         int M = Integer.parseInt(st.nextToken());
 
         int sum = 0;
-
-
         int max = 0;
         int arr[] = new int[N];
 
         st = new StringTokenizer(br.readLine());
-
+        // 배열에 넣는 for문
         for (int i = 0; i < N; i++) {
             arr[i] = Integer.parseInt(st.nextToken());
         }
 
+        //조건 탐색 for문
         for (int i = 0; i < N; i++) {
-            sum += arr[i];
             for (int j = i+1; j < N; j++) {
-                sum += arr[j];
                 for (int k = j+1; k < N; k++) {
-                    sum += arr[k];
+                    sum = arr[i] + arr[j] + arr[k];
                     if(sum > max && sum <= M){
                         max = sum;
                     }
-                    sum -= arr[k];
                 }
-                sum -= arr[j];
             }
-            sum -= arr[i];
         }
 
         System.out.println(max);
-
 
     }
 
